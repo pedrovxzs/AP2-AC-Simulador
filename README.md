@@ -25,7 +25,7 @@ Trabalho de arquitetura que tem como objetivo implementar um programa (em C ou C
  fim:  
   JMP fim  
 
- Código Conteúdo do arquivo de texto:
+ Código Conteúdo do arquivo de texto:  
  0000: 0x1803  
  0002: 0x1905  
  0004: 0x4220  
