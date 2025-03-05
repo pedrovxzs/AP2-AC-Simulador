@@ -1,7 +1,8 @@
 # AP2-AC-Simulador
 Trabalho de arquitetura que tem como objetivo implementar um programa (em C ou C++) que simule a execução de instruções mostradas na tabela de decodificação fornecida
-Autores:
-Pedro Vittor Moreira Sampaio, 570598
+
+Autores:  
+Pedro Vittor Moreira Sampaio, 570598  
 Willgner Silva Ferreira, 567152
 <div align="center">
 <img src="https://github.com/user-attachments/assets/ebc4b653-6804-46eb-a74e-2806d0a34ccc" width="800px" />
