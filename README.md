@@ -1,9 +1,18 @@
-# AP2-AC-Simulador
-Trabalho de arquitetura que tem como objetivo implementar um programa (em C ou C++) que simule a execução de instruções mostradas na tabela de decodificação fornecida
+# Instruções
 
-Autores:  
+Execute o main.cpp, e digite o nome do arquivo de texto contendo os endereços e contéudos, no formato "0000: 0x0000", o nome do arquivo 
+pode ser digitado sem a presença de sua extensão (.txt).
+
+# Sobre o Projeto
+
+### Autores do Projeto:  
 Pedro Vittor Moreira Sampaio, 570598  
 Willgner Silva Ferreira, 567152
+
+
+## AP2-AC-Simulador
+Trabalho de arquitetura que tem como objetivo implementar um programa (em C ou C++) que simule a execução de instruções mostradas na tabela de decodificação fornecida
+
 <div align="center">
 <img src="https://github.com/user-attachments/assets/ebc4b653-6804-46eb-a74e-2806d0a34ccc" width="800px" />
 </div>  
@@ -59,8 +68,3 @@ c) Ao final da execução, o simulador deverá apresentar o conteúdo (em notaç
  → Assuma que as todas iniciam zeradas  
  
  d) Sempre que ocorrer uma instrução NOP, o simulador deve exibir as mesmas informações descritas no item c.
-
-## Instruções
-
-Execute o main.cpp, e digite o nome do arquivo de texto contendo os endereços e contéudos, no formato "0000: 0x0000", o nome do arquivo 
-pode ser digitado sem a presença de sua extensão (.txt).
