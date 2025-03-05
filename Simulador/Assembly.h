@@ -105,12 +105,9 @@ private:
             case 0b1110:
                 handleROL();
                 break;
-            case 0b1111:
-                if (ir == 0xFFFF)
-                    return; // HALT
-                break;
             default:
-                throw std::runtime_error("Instruçao indefinida");
+                return; // HALT
+                break;
             }
         }
     }
@@ -222,8 +219,8 @@ private:
         else
         {
             uint8_t rn = (ir >> 2) & 0b111;
-            memory_data[registers[rn]] = registers[rm] & 0xFF;
-            memory_data[registers[rn] + 1] = registers[rm] >> 8;
+            memory_data[registers[rm]] = registers[rn] & 0xFF;
+            memory_data[registers[rm] + 1] = registers[rn] >> 8;
         }
     }
 
@@ -231,6 +228,7 @@ private:
     {
         uint8_t rd = (ir >> 8) & 0b111;
         uint8_t rm = (ir >> 5) & 0b111;
+
         registers[rd] = memory_data[registers[rm]] | (memory_data[registers[rm] + 1] << 8);
     }
 
@@ -400,8 +398,8 @@ public:
         while (std::getline(file, line))
         {
             uint16_t address, content;
-            if (sscanf(line.c_str(), "%hx:0x%hx", &address, &content) == 2)
-            {
+            if (sscanf(line.c_str(), "%hx: 0x%hx", &address, &content) == 2)
+            { 
                 memory_data[address] = content & 0xFF;
                 memory_data[address + 1] = content >> 8;
                 memory_instructions[address] = content & 0xFF;
@@ -440,6 +438,25 @@ public:
         std::cout << "\nPC: 0x" << std::hex << std::setw(4) << std::setfill('0') << pc << std::dec << std::endl
                   << "SP: 0x" << std::hex << std::setw(4) << std::setfill('0') << sp << std::dec << std::endl
                   << "-------------------------------------\n";
+
+        std::cout << "Memória de Dados:\n";
+        bool hasData = false;
+        for (size_t i = 0; i < MEMORY_SIZE && i < sp; i += 2)
+        {
+            uint16_t value = memory_data[i] | (memory_data[i + 1] << 8);
+            if (value != 0)
+            {
+                hasData = true;
+                std::cout << std::hex << std::setw(4) << std::setfill('0') << i
+                          << ": 0x" << std::setw(4) << std::setfill('0') << value << std::dec << std::endl;
+            }
+        }
+        if (!hasData)
+        {
+            std::cout << "Nenhum dado encontrado na memória.\n";
+        }
+        std::cout << "-------------------------------------\n";
+
         std::cout << "Pilha:\n";
         for (size_t i = 0; i < STACK_SIZE; i += 2)
         {
@@ -456,23 +473,6 @@ public:
                   << "Z (Zero): " << flags.Z << "\n"
                   << "S (Sign): " << flags.S << std::endl;
 
-        std::cout << "-------------------------------------\n";
-        std::cout << "Memória de Dados:\n";
-        bool hasData = false;
-        for (size_t i = 0; i < MEMORY_SIZE; i += 2)
-        {
-            uint16_t value = memory_data[i] | (memory_data[i + 1] << 8);
-            if (value != 0)
-            {
-                hasData = true;
-                std::cout << std::hex << std::setw(4) << std::setfill('0') << i
-                          << ": 0x" << std::setw(4) << std::setfill('0') << value << std::dec << std::endl;
-            }
-        }
-        if (!hasData)
-        {
-            std::cout << "Nenhum dado encontrado na memória.\n";
-        }
         std::cout << "-------------------------------------\n";
     }
 };

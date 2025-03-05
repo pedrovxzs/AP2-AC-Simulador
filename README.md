@@ -56,3 +56,8 @@ c) Ao final da execução, o simulador deverá apresentar o conteúdo (em notaç
  → Assuma que as todas iniciam zeradas  
  
  d) Sempre que ocorrer uma instrução NOP, o simulador deve exibir as mesmas informações descritas no item c.
+
+## Instruções
+
+Execute o main.cpp, e digite o nome do arquivo de texto contendo os endereços e contéudos, no formato "0000: 0x0000", o nome do arquivo 
+pode ser digitado sem a presença de sua extensão (.txt).

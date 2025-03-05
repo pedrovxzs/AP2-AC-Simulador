@@ -5,13 +5,17 @@ using namespace std;
 
 int main()
 {
+    //Leia o README para instruções adicionais
     CPUSimulator simulator;
-    std::string filename;
+    string filename;
 
-    simulator.loadMemory("t.txt");
+    cout << "Digite o nome do arquivo com as instrucoes (nao e necessario colocar .txt no final):" << endl;
+    cin >> filename;
+
+    simulator.loadMemory(filename+".txt");
 
     simulator.run();
 
     simulator.displayContent();
     return 0;
-}
+}   
